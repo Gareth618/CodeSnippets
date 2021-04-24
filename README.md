@@ -2,7 +2,7 @@
 
 Hi! I am Gareth618 and I've been into competitive programming since ~2017, so I think I have a word to say in this domain. Therefore, I decided to create this repo to showcase THE best templates for competitive programming in the world. But this means to rewrite all of them. So I've started with `SegTree`. Just look how beautiful it works:
 
-## Code for the *Dynamic Range Minimum Query* problem
+## Code for the **Dynamic Range Minimum Query** problem
 ```cpp
 int main() {
     int n; cin >> n;
@@ -20,7 +20,7 @@ int main() {
 }
 ```
 
-## Code for the *Range Maximum-Sum Subsequence Query* problem
+## Code for the **Range Maximum-Sum Subsequence Query** problem
 ```cpp
 int main() {
     int n; cin >> n;
