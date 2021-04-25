@@ -5,10 +5,10 @@ template<class T>
 class SegTree {
     int n;
     vector<T> tree;
-    function<T(const T&, const T&)> fun;
+    function<T(T, T)> fun;
     T ide;
 
-    void build(int node, int left, int right, vector<T>& v) {
+    void build(int node, int left, int right, const vector<T>& v) {
         if (left == right) {
             tree[node] = v[left];
             return;
@@ -19,7 +19,7 @@ class SegTree {
         tree[node] = fun(tree[2 * node], tree[2 * node + 1]);
     }
 
-    void update(int node, int left, int right, int pos, T val, function<void(T&, const T&)> upd) {
+    void update(int node, int left, int right, int pos, T val, function<void(T&, T)> upd) {
         if (left == right) {
             upd(tree[node], val);
             return;
@@ -47,12 +47,12 @@ class SegTree {
     }
 
 public:
-    SegTree(int n, function<T(const T&, const T&)> fun = plus<T>(), T ide = T()) :
+    SegTree(int n, function<T(T, T)> fun = plus<T>(), T ide = T()) :
         n(n), tree(4 * n, ide), fun(fun), ide(ide) { }
-    SegTree(vector<T> v, function<T(const T&, const T&)> fun = plus<T>(), T ide = T()) :
+    SegTree(const vector<T>& v, function<T(T, T)> fun = plus<T>(), T ide = T()) :
         SegTree(v.size(), fun, ide) { build(1, 0, n - 1, v); }
 
-    void update(int pos, T val, function<void(T&, const T&)> upd = [](T& x, const T& y) { x = y; }) {
+    void update(int pos, T val, function<void(T&, T)> upd = [](T& x, T y) { x = y; }) {
         update(1, 0, n - 1, pos, val, upd);
     }
 

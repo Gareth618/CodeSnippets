@@ -31,7 +31,7 @@ int main() {
     vector<tuple<int, int, int, int>> init(n + 1);
     for (int i = 1; i <= n; i++)
         init[i] = make_tuple(v[i], v[i], v[i], v[i]);
-    SegTree<tuple<int, int, int, int>> st(init, [](const auto& lft, const auto& rgh) {
+    SegTree<tuple<int, int, int, int>> st(init, [](auto lft, auto rgh) {
         auto [lftSumAll, lftMaxSum, lftMaxLft, lftMaxRgh] = lft;
         auto [rghSumAll, rghMaxSum, rghMaxLft, rghMaxRgh] = rgh;
         return make_tuple(
