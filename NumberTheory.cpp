@@ -15,7 +15,7 @@ struct Math {
         return pwr(x, MOD - 2);
     }
 
-    static auto euclid(int a, int b = MOD) {
+    static tuple<int, int, int> euclid(int a, int b = MOD) {
         int xa = 1, ya = 0;
         int xb = 0, yb = 1;
         while (b) {
@@ -29,18 +29,6 @@ struct Math {
             xb = xr; yb = yr;
         }
         return make_tuple(a, xa, ya);
-    }
-
-    static auto getFact(int n) {
-        vector<int> fact(n + 1);
-        fact[0] = 1;
-        for (int i = 1; i <= n; i++)
-            fact[i] = 1LL * fact[i - 1] * i % MOD;
-        vector<int> mInv(n + 1);
-        mInv[n] = modInv(fact[n]);
-        for (int i = n - 1; i >= 0; i--)
-            mInv[i] = 1LL * mInv[i + 1] * (i + 1) % MOD;
-        return make_pair(fact, mInv);
     }
 };
 

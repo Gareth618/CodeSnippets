@@ -25,7 +25,7 @@ public:
 
     template<class T>
     bool prime(T n) {
-        if (n < (int) sieve.size())
+        if (n < int(sieve.size()))
             return !sieve[n];
         for (int d : primes) {
             if (1LL * d * d > n)
