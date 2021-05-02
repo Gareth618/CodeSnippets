@@ -13,7 +13,7 @@ class SegTree {
             tree[node] = v[left];
             return;
         }
-        int mid = (left + right) / 2;
+        const int mid = (left + right) / 2;
         build(2 * node, left, mid, v);
         build(2 * node + 1, mid + 1, right, v);
         tree[node] = fun(tree[2 * node], tree[2 * node + 1]);
@@ -24,7 +24,7 @@ class SegTree {
             upd(tree[node], val);
             return;
         }
-        int mid = (left + right) / 2;
+        const int mid = (left + right) / 2;
         if (pos <= mid)
             update(2 * node, left, mid, pos, val, upd);
         else
@@ -35,7 +35,7 @@ class SegTree {
     T query(int node, int left, int right, int qLeft, int qRight) {
         if (left == qLeft && right == qRight)
             return tree[node];
-        int mid = (left + right) / 2;
+        const int mid = (left + right) / 2;
         if (qRight <= mid)
             return query(2 * node, left, mid, qLeft, qRight);
         if (qLeft > mid)
