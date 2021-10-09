@@ -64,4 +64,3 @@ vector<pair<int, T>> getDiam(const vector<vector<pair<int, T>>>& tree) {
     ascend(dfs2(dfs1(1, 0, 0).second, 0, 0).second);
     return diam;
 }
-//
