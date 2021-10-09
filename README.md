@@ -1,8 +1,9 @@
 # CodeSnippets
 
-Hi! I am Gareth618 and I've been into competitive programming since ~2017, so I think I have a word to say in this domain. Therefore, I decided to create this repo to showcase THE best templates for competitive programming in the world. But this means to rewrite all of them. So I've started with `SegTree`. Just look how beautiful it works:
+Hi! I am Gareth618 and I've been into competitive programming since ~2017, so I think I have a word to say in this domain. Therefore, I decided to create this repo to showcase THE best templates for competitive programming in the world. But this means to rewrite all of them, in order to follow the C++17 standards and just make them as flexible as possible. So I've started with `SegTree`. Just look how beautiful it works:
 
-## Code for the *Dynamic Range Minimum Query* problem
+## Code for the _Dynamic Range Minimum Query_ problem
+
 ```cpp
 int main() {
     int n; cin >> n;
@@ -20,7 +21,8 @@ int main() {
 }
 ```
 
-## Code for the *Range Maximum-Sum Subsequence Query* problem
+## Code for the _Range Maximum-Sum Subsequence Query_ problem
+
 ```cpp
 int main() {
     int n; cin >> n;
@@ -31,14 +33,14 @@ int main() {
     vector<tuple<int, int, int, int>> init(n + 1);
     for (int i = 1; i <= n; i++)
         init[i] = make_tuple(v[i], v[i], v[i], v[i]);
-    SegTree<tuple<int, int, int, int>> st(init, [](auto lft, auto rgh) {
-        auto [lftSumAll, lftMaxSum, lftMaxLft, lftMaxRgh] = lft;
-        auto [rghSumAll, rghMaxSum, rghMaxLft, rghMaxRgh] = rgh;
+    SegTree<tuple<int, int, int, int>> st(init, [](auto l, auto r) {
+        auto [lSumAll, lMaxSum, lMaxLft, lMaxRgh] = l;
+        auto [rSumAll, rMaxSum, rMaxLft, rMaxRgh] = r;
         return make_tuple(
-            lftSumAll + rghSumAll,
-            max({lftMaxSum, lftMaxRgh + rghMaxLft, rghMaxSum}),
-            max(lftMaxLft, lftSumAll + rghMaxLft),
-            max(rghMaxRgh, rghSumAll + lftMaxRgh)
+            lSumAll + rSumAll,
+            max({lMaxSum, lMaxRgh + rMaxLft, rMaxSum}),
+            max(lMaxLft, lSumAll + rMaxLft),
+            max(rMaxRgh, rSumAll + lMaxRgh)
         );
     });
 

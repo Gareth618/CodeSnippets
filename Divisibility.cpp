@@ -42,6 +42,14 @@ vector<vector<int>> getDivUpToN(int n) {
     return div;
 }
 
+vector<vector<int>> getAllDivUpToN(int n) {
+    vector<vector<int>> div(n + 1);
+    for (int i = 1; i <= n; i++)
+        for (int j = i; j <= n; j += i)
+            div[i].push_back(j);
+    return div;
+}
+
 template<class T>
 int divNum(const vector<pair<T, int>>& div) {
     int ans = 1;

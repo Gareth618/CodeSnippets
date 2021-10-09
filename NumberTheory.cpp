@@ -25,8 +25,8 @@ struct Math {
             b = r;
             int xr = xa - q * xb;
             int yr = ya - q * yb;
-            xa = xb; ya = yb;
-            xb = xr; yb = yr;
+            xa = xb; xb = xr;
+            ya = yb; yb = yr;
         }
         return make_tuple(a, xa, ya);
     }
