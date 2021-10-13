@@ -33,6 +33,20 @@ vector<pair<T, int>> getDiv(T n) {
     return div;
 }
 
+template<class T>
+vector<T> getAllDiv(T n) {
+    vector<T> l, r;
+    for (T d = 1; d * d <= n; d++)
+        if (n % d == 0) {
+            l.push_back(d);
+            if (d != n / d)
+                r.push_back(n / d);
+        }
+    for (int i = int(r.size()) - 1; i >= 0; i--)
+        l.push_back(r[i]);
+    return l;
+}
+
 vector<vector<int>> getDivUpToN(int n) {
     vector<vector<int>> div(n + 1);
     for (int i = 2; i <= n; i++)
