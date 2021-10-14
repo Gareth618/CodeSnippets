@@ -1,8 +1,11 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-template<int MOD>
+template<int MOD = int(1e9 + 7)>
 struct Math {
+    static inline void add(int& a, int b) { a += b; if (a >= MOD) a -= MOD; }
+    static inline void sub(int& a, int b) { a -= b; if (a <    0) a += MOD; }
+
     static int pwr(int x, int n) {
         if (!n)
             return 1;
@@ -32,7 +35,7 @@ struct Math {
     }
 };
 
-template<int MOD>
+template<int MOD = int(1e9 + 7)>
 class Fact {
     vector<int> fact;
     vector<int> mInv;
