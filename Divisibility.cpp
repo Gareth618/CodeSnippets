@@ -3,11 +3,9 @@ using namespace std;
 
 template<class T>
 bool prime(T n) {
-    if (n == 1)
+    if (n < 2)
         return false;
-    if (n % 2 == 0)
-        return n == 2;
-    for (T d = 3; d * d <= n; d += 2)
+    for (T d = 2; d * d <= n; d++)
         if (n % d == 0)
             return false;
     return true;
@@ -16,18 +14,14 @@ bool prime(T n) {
 template<class T>
 vector<pair<T, int>> getDiv(T n) {
     vector<pair<T, int>> div;
-    auto divide = [&](T d) {
-        if (n % d)
-            return;
-        div.emplace_back(d, 0);
-        while (n % d == 0) {
-            div.back().second++;
-            n /= d;
+    for (T d = 2; d * d <= n; d++)
+        if (n % d == 0) {
+            div.emplace_back(d, 0);
+            while (n % d == 0) {
+                div.back().second++;
+                n /= d;
+            }
         }
-    };
-    divide(2);
-    for (T d = 3; d * d <= n; d += 2)
-        divide(d);
     if (n > 1)
         div.emplace_back(n, 1);
     return div;

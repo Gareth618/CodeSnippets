@@ -22,12 +22,12 @@ struct Math {
         int xa = 1, ya = 0;
         int xb = 0, yb = 1;
         while (b) {
-            int q = a / b;
-            int r = a % b;
+            const int q = a / b;
+            const int r = a % b;
             a = b;
             b = r;
-            int xr = xa - q * xb;
-            int yr = ya - q * yb;
+            const int xr = xa - q * xb;
+            const int yr = ya - q * yb;
             xa = xb; xb = xr;
             ya = yb; yb = yr;
         }

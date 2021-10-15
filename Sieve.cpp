@@ -8,14 +8,11 @@ class Sieve {
 public:
     Sieve(int n) : sieve(n + 1) {
         sieve[0] = sieve[1] = true;
-        for (int j = 4; j <= n; j += 2)
-            sieve[j] = true;
-        for (int i = 3; i * i <= n; i += 2)
+        for (int i = 2; i * i <= n; i++)
             if (!sieve[i])
-                for (int j = i * i; j <= n; j += 2 * i)
+                for (int j = i * i; j <= n; j += i)
                     sieve[j] = true;
-        primes.push_back(2);
-        for (int i = 3; i <= n; i += 2)
+        for (int i = 2; i <= n; i++)
             if (!sieve[i])
                 primes.push_back(i);
     }
@@ -39,19 +36,16 @@ public:
     template<class T>
     vector<pair<T, int>> getDiv(T n) {
         vector<pair<T, int>> div;
-        auto divide = [&](int d) {
-            if (n % d)
-                return;
-            div.emplace_back(d, 0);
-            while (n % d == 0) {
-                div.back().second++;
-                n /= d;
-            }
-        };
         for (int d : primes) {
             if (1LL * d * d > n)
                 break;
-            divide(d);
+            if (n % d == 0) {
+                div.emplace_back(d, 0);
+                while (n % d == 0) {
+                    div.back().second++;
+                    n /= d;
+                }
+            }
         }
         if (n > 1)
             div.emplace_back(n, 1);
