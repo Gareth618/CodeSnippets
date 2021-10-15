@@ -52,12 +52,12 @@ public:
 };
 
 template<class T>
-class RMQ2Dsqr {
+class SqrRMQ {
     vector<vector<vector<T>>> dp;
     function<T(T, T)> fun;
 
 public:
-    RMQ2Dsqr(const vector<vector<T>>& mat, function<T(T, T)> fun = [](T x, T y) { return min(x, y); }) :
+    SqrRMQ(const vector<vector<T>>& mat, function<T(T, T)> fun = [](T x, T y) { return min(x, y); }) :
         dp(log2(max(mat.size(), mat.back().size())) + 1, vector(mat.size(), vector<T>(mat.back().size()))), fun(fun) {
             dp[0] = mat;
             for (int log = 1; log < int(dp.size()); log++)
