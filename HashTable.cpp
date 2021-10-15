@@ -11,7 +11,7 @@ public:
         return abs(key) % MOD;
     }) : hash(hash), table(MOD) { }
 
-    int& operator[](K key) {
+    V& operator[](K key) {
         const int h = hash(key);
         for (auto& [itKey, itVal] : table[h])
             if (itKey == key)
