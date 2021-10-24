@@ -6,7 +6,7 @@ class SegTree {
     int n;
     vector<T> tree;
     function<T(T, T)> fun;
-    T ide;
+    T null;
 
     void build(int node, int left, int right, const vector<T>& v) {
         if (left == right) {
@@ -47,10 +47,10 @@ class SegTree {
     }
 
 public:
-    SegTree(int n, function<T(T, T)> fun = plus<T>(), T ide = T()) :
-        n(n), tree(4 * n, ide), fun(fun), ide(ide) { }
-    SegTree(const vector<T>& v, function<T(T, T)> fun = plus<T>(), T ide = T()) :
-        SegTree(v.size(), fun, ide) { build(1, 0, n - 1, v); }
+    SegTree(int n, function<T(T, T)> fun = plus<T>(), T null = T()) :
+        n(n), tree(4 * n, null), fun(fun), null(null) { }
+    SegTree(const vector<T>& v, function<T(T, T)> fun = plus<T>(), T null = T()) :
+        SegTree(v.size(), fun, null) { build(1, 0, n - 1, v); }
 
     void update(int pos, T val, function<void(T&, T)> upd = [](T& x, T y) { x = y; }) {
         update(1, 0, n - 1, pos, val, upd);
@@ -58,7 +58,7 @@ public:
 
     T query(int left, int right) {
         if (left > right)
-            return ide;
+            return null;
         return query(1, 0, n - 1, left, right);
     }
 };

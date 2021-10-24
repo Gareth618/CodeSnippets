@@ -6,11 +6,11 @@ class Deque {
     int ptr;
     deque<pair<T, int>> dq;
     function<bool(T, T)> fun;
-    T ide;
+    T null;
 
 public:
-    Deque(function<bool(T, T)> fun = [](T x, T y) { return min(x, y); }, T ide = 1e9) :
-        ptr(0), fun(fun), ide(ide) { }
+    Deque(function<bool(T, T)> fun = [](T x, T y) { return min(x, y); }, T null = 1e9) :
+        ptr(0), fun(fun), null(null) { }
 
     void push(T val) {
         while (!dq.empty() && val < dq.back().first)
@@ -24,6 +24,6 @@ public:
     }
 
     T query() {
-        return dq.empty() ? ide : dq.front().first;
+        return dq.empty() ? null : dq.front().first;
     }
 };
