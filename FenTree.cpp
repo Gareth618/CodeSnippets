@@ -45,7 +45,8 @@ public:
     T query(int left, int right) {
         if (left > right)
             return 0;
-        T ans = query(right);
+        T ans = 0;
+        add(ans, query(right));
         sub(ans, query(left - 1));
         return ans;
     }
@@ -109,7 +110,8 @@ public:
     T query(int x1, int y1, int x2, int y2) {
         if (x1 > x2 || y1 > y2)
             return 0;
-        T ans = query(x2, y2);
+        T ans = 0;
+        add(ans, query(x2, y2));
         sub(ans, query(x1 - 1, y2));
         sub(ans, query(x2, y1 - 1));
         add(ans, query(x1 - 1, y1 - 1));
