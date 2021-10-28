@@ -36,7 +36,7 @@ public:
     }
 
     T query(int pos) {
-        T sum = 0;
+        T sum = T();
         for (int i = pos; i >= 1; i -= i & -i)
             add(sum, bit[i]);
         return sum;
@@ -44,8 +44,8 @@ public:
 
     T query(int left, int right) {
         if (left > right)
-            return 0;
-        T ans = 0;
+            return T();
+        T ans = T();
         add(ans, query(right));
         sub(ans, query(left - 1));
         return ans;
@@ -100,7 +100,7 @@ public:
     }
 
     T query(int x, int y) {
-        T sum = 0;
+        T sum = T();
         for (int i = x; i >= 1; i -= i & -i)
             for (int j = y; j >= 1; j -= j & -j)
                 add(sum, bit[i][j]);
@@ -109,8 +109,8 @@ public:
 
     T query(int x1, int y1, int x2, int y2) {
         if (x1 > x2 || y1 > y2)
-            return 0;
-        T ans = 0;
+            return T();
+        T ans = T();
         add(ans, query(x2, y2));
         sub(ans, query(x1 - 1, y2));
         sub(ans, query(x2, y1 - 1));
