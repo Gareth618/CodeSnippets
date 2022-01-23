@@ -16,7 +16,7 @@ public:
         for (auto& [itKey, itVal] : table[h])
             if (itKey == key)
                 return itVal;
-        table[h].emplace_back(key, 0);
+        table[h].emplace_back(key, V());
         return table[h].back().second;
     }
 
