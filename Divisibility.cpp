@@ -41,7 +41,7 @@ vector<T> getAllDiv(T n) {
     return l;
 }
 
-vector<vector<int>> getDivUpToN(int n) {
+vector<vector<int>> getDivUpTo(int n) {
     vector<vector<int>> div(n + 1);
     for (int i = 2; i <= n; i++)
         if (div[i].empty())
@@ -50,7 +50,7 @@ vector<vector<int>> getDivUpToN(int n) {
     return div;
 }
 
-vector<vector<int>> getAllDivUpToN(int n) {
+vector<vector<int>> getAllDivUpTo(int n) {
     vector<vector<int>> div(n + 1);
     for (int i = 1; i <= n; i++)
         for (int j = i; j <= n; j += i)
@@ -89,7 +89,7 @@ T phi(const vector<pair<T, int>>& div) {
     return ans;
 }
 
-vector<int> phiUpToN(int n) {
+vector<int> phiUpTo(int n) {
     vector<int> phi(n + 1);
     for (int i = 1; i <= n; i++)
         phi[i] = i;
