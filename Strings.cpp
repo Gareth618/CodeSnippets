@@ -15,7 +15,7 @@ vector<int> getPi(const string& str) {
 }
 
 vector<int> kmp(const string& str, const string& pat) {
-    string concat = pat + '#' + str;
+    const string concat = pat + '#' + str;
     auto pi = getPi(concat);
     vector<int> occ;
     for (int i = pat.size() + 1; i < int(concat.size()); i++)
